@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title rails flat app 
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  body class='metrouicss' style='zoom:1'
+	div.grid
+		div.row
+			div.span5
+			- if flash[:success]
+				span class='label success' == flash[:success]
+			- if flash[:notice]
+				span class='label warning' == flash[:notice]
+			- if flash[:error]
+				span class='label inverse' == flash[:error]
+
+    = yield

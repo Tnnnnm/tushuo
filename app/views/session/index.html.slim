@@ -1,0 +1,44 @@
+.page
+  .page-region-content
+    .grid style='background-color:#f5f5f5; margin-top:120px'
+      .row style='margin-top:15px'
+        .span2
+        = form_tag '/signin', :id => 'frm' do
+          .span4
+            h2 用户名称
+            div class='input-control text span4 as-block'
+              = text_field_tag :login, params[:login]
+              button.helper tabindex='-1' type='button'
+          .span4
+            h2 登录密码
+            div class='input-control password span4 as-block'
+              = password_field_tag :passwd, params[:passwd]
+              button.helper tabindex='-1' type='button'
+
+          .span2
+        
+        .row
+          .span4
+          
+          .span4
+            button.default
+              i.icon-bookmark id='loginBtn' 登录
+            button.default
+              i.icon-bookmark id='resetBtn' 重置
+          
+          .span2 id='msg'
+          
+        .span4
+        coffee:
+          $('#loginBtn').click ->
+            opposite = true 
+            login = $('#login').val()
+            passwd = $('#passwd').val()
+            opposite = false if login.length <= 5
+            opposite = false if passwd.length <= 5
+            if opposite
+              console.log('yes')
+              $('#frm').submit()
+            else
+              console.log('no')
+              $('#msg').text('Username or Password Invalid')

@@ -1,0 +1,60 @@
+div class='page secondary with-sidebar'
+  = render 'share/header'  
+  = render 'share/sidebar'  
+  
+  div class='page-region'
+    div class='page-region-content'
+      .span12
+        button.big
+          i class='icon-arrow-left-3' Big button
+        button.big
+          i class='icon-arrow-right-3' Big button
+        
+        table.hovered
+          thead
+            tr
+              th Name
+              th.right Time Cp
+              th.right Network
+              th.right Traffic
+              th.right Tiles update
+          tbody
+            tr
+              td Bing
+              td.right 0:01:31
+              td.right 0.4 Mb
+              td.right 0.2 Mb
+              td.right 0.1 Mb
+            tr
+              td Bing
+              td.right 0:00:51
+              td.right 0.2 Mb
+              td.right 0 Mb
+              td.right 0.7 Mb
+            tr
+              td Bing
+              td.right 0:02:01
+              td.right 0.4 Mb
+              td.right 0.3 Mb
+              td.right 0.3 Mb
+        
+        .pagination
+          ul
+            li.first
+              a
+            li.prev
+              a
+            li
+              a 1
+            li
+              a 2
+            li.spaces
+              a ...
+            li
+              a 3
+            li.active
+              a 4
+            li.next
+              a
+            li.last
+              a
