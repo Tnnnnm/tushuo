@@ -6,44 +6,41 @@ div class='page secondary with-sidebar'
     div class='page-region-content'
       .span12
         button.big
-          i#listBtn class='icon-arrow-left' &nbsp;列表 
+          i class='icon-arrow-left' &nbsp;列表 
         button.big
-          i#categoryBtn class='icon-arrow-right' &nbsp;分类
+          i class='icon-arrow-right' &nbsp;分类
         
         .row
-        = form_tag tushuolist_path(@tushuo.id), :method => :put, :multipart => true, :id => 'frm' do
+        = form_tag tushuosort_index_path, :multipart => true, :id => 'frm' do
           .span5
             h3 标题
             div class='input-control text span4 as-block'
-              = text_field_tag :title, :params['title'], :value => @tushuo.title
+              = text_field_tag :title
               button.helper tabindex='-1' type='button'
 
             h3 状态
             label class='input-control radio'
-              input type='radio' name='status' value=0 checked='checked'
+              input type='radio' name='status' value=1 checked='checked'
               span.helper 启用
             label class='input-control radio'
               input type='radio' name='status' value=1
               span.helper 禁用
             
-            h3 图片
-            - if @tushuo.tushuoimg.present?
-              = image_tag @tushuo.tushuoimg_url(:icon).to_s 
-            - else
-              h3 No image uploaded
+            h3 封面 
             label class='input-control text span4 as-block'
-              input type='file' name='tushuoimg'
+              input type='file' name='tushuocover'
 
         .row
           .span4
           .span4
             button.default
-              i.icon-bookmark id='editBtn' 修改 
-            .span2 id='msg'
+              i.icon-bookmark id='addBtn' 添加
+            .span2
+              h3#msg
         .span4    
 
           coffee:
-            $('#editBtn').click ->
+            $('#addBtn').click ->
               opposite = true 
               title = $('#title').val()
               opposite = false if title.length <= 5
@@ -51,6 +48,3 @@ div class='page secondary with-sidebar'
                 $('#frm').submit()
               else
                 $('#msg').text('Invalid')
-
-            $('#listBtn').click ->
-              location.href='/tushuolist' 

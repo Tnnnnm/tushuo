@@ -14,6 +14,7 @@ Tushuo::Application.routes.draw do
 
   resources :dashboard, :only => [:index]
   resources :tushuolist
+  resources :tushuosort
 
   #resources :category do
   #  resources :tushuolist

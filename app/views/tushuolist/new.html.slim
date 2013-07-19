@@ -15,7 +15,7 @@ div class='page secondary with-sidebar'
           .span5
             h3 标题
             div class='input-control text span4 as-block'
-              = text_field_tag :title, params[:login]
+              = text_field_tag :title
               button.helper tabindex='-1' type='button'
 
             h3 状态
@@ -35,7 +35,8 @@ div class='page secondary with-sidebar'
           .span4
             button.default
               i.icon-bookmark id='addBtn' 添加
-            .span2 id='msg'
+            .span2
+              h3#msg
         .span4    
 
           coffee:

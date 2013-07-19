@@ -11,7 +11,7 @@ div class='page secondary with-sidebar'
           i#categoryBtn class='icon-arrow-right' &nbsp;分类
         
         .row
-        = form_tag tushuolist_path(@tushuo.id), :method => :put, :multipart => true, :id => 'frm' do
+        = form_tag tushuosort_path(@tushuo.id), :method => :put, :multipart => true, :id => 'frm' do
           .span5
             h3 标题
             div class='input-control text span4 as-block'
@@ -26,13 +26,13 @@ div class='page secondary with-sidebar'
               input type='radio' name='status' value=1
               span.helper 禁用
             
-            h3 图片
-            - if @tushuo.tushuoimg.present?
-              = image_tag @tushuo.tushuoimg_url(:icon).to_s 
+            h3 封面 
+            - if @tushuo.tushuocover.present?
+              = image_tag @tushuo.tushuocover_url(:icon).to_s 
             - else
-              h3 No image uploaded
+              h3 No cover uploaded
             label class='input-control text span4 as-block'
-              input type='file' name='tushuoimg'
+              input type='file' name='tushuocover'
 
         .row
           .span4
@@ -53,4 +53,4 @@ div class='page secondary with-sidebar'
                 $('#msg').text('Invalid')
 
             $('#listBtn').click ->
-              location.href='/tushuolist' 
+              location.href='/tushuosort' 

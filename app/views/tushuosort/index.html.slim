@@ -10,7 +10,7 @@ div class='page secondary with-sidebar'
         button.big
           i#categoryBtn class='icon-arrow-right' &nbsp;分类
         
-        - unless @tushuolist.empty?
+        - unless @tushuosort.empty?
           table.hovered
             thead
               tr
@@ -19,7 +19,7 @@ div class='page secondary with-sidebar'
                 th 状态
                 th 管理
             tbody
-              - for tushuo in @tushuolist  
+              - for tushuo in @tushuosort  
                 tr
                   td = tushuo.id
                   td = tushuo.title
@@ -28,35 +28,17 @@ div class='page secondary with-sidebar'
                   - else
                     td 禁用
                   td 
-                    = link_to edit_tushuolist_path(tushuo.id) do
+                    = link_to edit_tushuosort_path(tushuo.id) do
                       i.icon-enter-2
-                    = link_to tushuolist_path(tushuo.id), :confirm => 'want to destroy?', :method => 'delete' do
+                    = link_to tushuosort_path(tushuo.id), :confirm => 'want to destroy?', :method => 'delete' do
                       i.icon-cancel-2
         - else
           h3 No items found!
 
           .pagination
-            = will_paginate @tushuolist
-            /ul
-            /  li.first
-            /    a
-            /  li.prev
-            /    a
-            /  li
-            /    a 1
-            /  li
-            /    a 2
-            /  li.spaces
-            /    a ...
-            /  li
-            /    a 3
-            /  li.active
-            /    a 4
-            /  li.next
-            /    a
-            /  li.last
-            /    a
+            = will_paginate @tushuosort
 
         coffee:
           $('#addBtn').click ->
-            location.href='/tushuolist/new' 
+            console.log('asdfa')
+            location.href='/tushuosort/new' 
