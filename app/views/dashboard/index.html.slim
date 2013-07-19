@@ -6,55 +6,39 @@ div class='page secondary with-sidebar'
     div class='page-region-content'
       .span12
         button.big
-          i class='icon-arrow-left-3' Big button
+          i#list class='icon-arrow-left' &nbsp;图说
         button.big
-          i class='icon-arrow-right-3' Big button
+          i#sort class='icon-arrow-right' &nbsp;专题
         
-        table.hovered
-          thead
-            tr
-              th Name
-              th.right Time Cp
-              th.right Network
-              th.right Traffic
-              th.right Tiles update
-          tbody
-            tr
-              td Bing
-              td.right 0:01:31
-              td.right 0.4 Mb
-              td.right 0.2 Mb
-              td.right 0.1 Mb
-            tr
-              td Bing
-              td.right 0:00:51
-              td.right 0.2 Mb
-              td.right 0 Mb
-              td.right 0.7 Mb
-            tr
-              td Bing
-              td.right 0:02:01
-              td.right 0.4 Mb
-              td.right 0.3 Mb
-              td.right 0.3 Mb
-        
-        .pagination
-          ul
-            li.first
-              a
-            li.prev
-              a
-            li
-              a 1
-            li
-              a 2
-            li.spaces
-              a ...
-            li
-              a 3
-            li.active
-              a 4
-            li.next
-              a
-            li.last
-              a
+        - unless @tushuolist.empty?
+          table.hovered
+            thead
+              tr
+                th 编号 
+                th 标题
+                th 状态
+                th 管理
+            tbody
+              - for tushuo in @tushuolist  
+                tr
+                  td = tushuo.id
+                  td = tushuo.title
+                  - if tushuo.status == 0
+                    td 启用
+                  - else
+                    td 禁用
+                  td 
+                    = link_to edit_tushuolist_path(tushuo.id) do
+                      i.icon-enter-2
+                    = link_to tushuolist_path(tushuo.id), :confirm => 'want to destroy?', :method => 'delete' do
+                      i.icon-cancel-2
+        - else
+          h3 No items found!
+
+          .pagination
+            = will_paginate @tushuosort
+          
+        coffee:
+          $('#list').click ->
+            console.log('asdfa')
+            location.href='/tushuosort/new' 

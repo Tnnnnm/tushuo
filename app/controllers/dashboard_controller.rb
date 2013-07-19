@@ -4,9 +4,9 @@ class DashboardController < ApplicationController
 
   before_filter :authenticate_user!
 
-  #dashboard
   def index
-
+    @tushuolist = Tushuolist.open.all
+    @tushuosort = Tushuosort.open.all
   end
   
 end
