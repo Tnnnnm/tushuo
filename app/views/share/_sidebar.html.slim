@@ -6,7 +6,7 @@ div class='page-sidebar'
         i class='icon-list' 图说专题 
       ul class='sub-menu light sidebar-dropdown-menu open keep-opened open' style='display:none'
         li
-          = link_to '图说专题', tushuosort_index_path
+          = link_to '专题列表', tushuosort_index_path
         li
           = link_to '专题添加', new_tushuosort_path
     
@@ -15,11 +15,11 @@ div class='page-sidebar'
         i class='icon-list' 图说管理 
       ul class='sub-menu light sidebar-dropdown-menu keep-opened open' style='display:none'
         li
-          = link_to '图说添加', new_tushuolist_path
-        li
           = link_to '图说列表', tushuolist_index_path
         li
-          = link_to '图说分类', tushuolist_index_path
+          = link_to '图说添加', new_tushuolist_path
+        /li
+          /= link_to '图说分类', tushuolist_index_path
     
     li class='sticker sticker-color-orange dropdown' data-role='dropdown'
       a
@@ -28,6 +28,6 @@ div class='page-sidebar'
         li
           a href='' 密码修改 
         li
-          a href='' 退出登录
+          = link_to '退出登录', '/signout'
         li
           a href='' 权限设置
