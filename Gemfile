@@ -1,6 +1,6 @@
 source 'http://ruby.taobao.org'
 
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -26,6 +26,14 @@ gem 'execjs'
 gem 'therubyracer'
 
 gem 'slim-rails'
+
+# will_paginate
+gem 'will_paginate'
+ 
+# carrierwave
+gem 'carrierwave'
+gem 'rmagick'
+gem 'mini_magick'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

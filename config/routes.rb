@@ -13,6 +13,11 @@ Tushuo::Application.routes.draw do
 	end
 
   resources :dashboard, :only => [:index]
+  resources :tushuolist
+
+  #resources :category do
+  #  resources :tushuolist
+  #end
 
   post "/signin" => "session#create"
   get "/signout" => "session#destory"

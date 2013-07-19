@@ -29,6 +29,7 @@
           .span2 id='msg'
           
         .span4
+
         coffee:
           $('#loginBtn').click ->
             opposite = true 
@@ -37,8 +38,6 @@
             opposite = false if login.length <= 5
             opposite = false if passwd.length <= 5
             if opposite
-              console.log('yes')
               $('#frm').submit()
             else
-              console.log('no')
               $('#msg').text('Username or Password Invalid')

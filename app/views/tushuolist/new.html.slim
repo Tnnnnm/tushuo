@@ -1,0 +1,51 @@
+div class='page secondary with-sidebar'
+  = render 'share/header'  
+  = render 'share/sidebar'  
+  
+  div class='page-region'
+    div class='page-region-content'
+      .span12
+        button.big
+          i class='icon-arrow-left-3' 列表 
+        button.big
+          i class='icon-arrow-right-3' 分类
+        
+        .row
+        = form_tag tushuolist_index_path, :multipart => true, :id => 'frm' do
+          .span5
+            h3 标题
+            div class='input-control text span4 as-block'
+              = text_field_tag :title, params[:login]
+              button.helper tabindex='-1' type='button'
+
+            h3 状态
+            label class='input-control radio'
+              input type='radio' name='status' value=0 checked='checked'
+              span.helper 启用
+            label class='input-control radio'
+              input type='radio' name='status' value=1
+              span.helper 禁用
+            
+            h3 图片
+            label class='input-control file'
+              input type='file' name='tushuoimg'
+
+        .row
+          .span4
+          .span4
+            button.default
+              i.icon-bookmark id='addBtn' 添加
+            button.default
+              i.icon-bookmark id='resetBtn' 重置
+            .span2 id='msg'
+        .span4    
+
+          coffee:
+            $('#addBtn').click ->
+              opposite = true 
+              title = $('#title').val()
+              opposite = false if title.length <= 5
+              if opposite
+                $('#frm').submit()
+              else
+                $('#msg').text('Invalid')
