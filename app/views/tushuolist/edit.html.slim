@@ -6,16 +6,16 @@ div class='page secondary with-sidebar'
     div class='page-region-content'
       .span12
         button.big
-          i class='icon-arrow-left' &nbsp;列表 
+          i#listBtn class='icon-arrow-left' &nbsp;列表 
         button.big
-          i class='icon-arrow-right' &nbsp;分类
+          i#categoryBtn class='icon-arrow-right' &nbsp;分类
         
         .row
-        = form_tag tushuolist_index_path, :multipart => true, :id => 'frm' do
+        = form_tag tushuolist_path(@tushuo.id), :method => :put, :multipart => true, :id => 'frm' do
           .span5
             h3 标题
             div class='input-control text span4 as-block'
-              = text_field_tag :title, params[:login]
+              = text_field_tag :title, params[:login], :value => @tushuo.title
               button.helper tabindex='-1' type='button'
 
             h3 状态
@@ -27,6 +27,10 @@ div class='page secondary with-sidebar'
               span.helper 禁用
             
             h3 图片
+            - if @tushuo.tushuoimg.present?
+              = image_tag @tushuo.tushuoimg_url(:icon).to_s 
+            - else
+              h3 No image uploaded
             label class='input-control text span4 as-block'
               input type='file' name='tushuoimg'
 
@@ -34,7 +38,7 @@ div class='page secondary with-sidebar'
           .span4
           .span4
             button.default
-              i.icon-bookmark id='addBtn' 添加
+              i.icon-bookmark id='addBtn' 修改 
             .span2 id='msg'
         .span4    
 
@@ -47,3 +51,6 @@ div class='page secondary with-sidebar'
                 $('#frm').submit()
               else
                 $('#msg').text('Invalid')
+
+            $('#listBtn').click ->
+              location.href='/tushuolist' 

@@ -6,44 +6,55 @@ div class='page secondary with-sidebar'
     div class='page-region-content'
       .span12
         button.big
-          i#addBtn class='icon-arrow-left-3' 新增
+          i#addBtn class='icon-arrow-left' &nbsp;新增
         button.big
-          i#categoryBtn class='icon-arrow-right-3' 分类
+          i#categoryBtn class='icon-arrow-right' &nbsp;分类
         
         - unless @tushuolist.empty?
           table.hovered
             thead
               tr
-                th ID 
-                th Title
-                th Status
-                th Operate
+                th 编号 
+                th 标题
+                th 状态
+                th 管理
             tbody
               - for tushuo in @tushuolist  
                 tr
                   td = tushuo.id
                   td = tushuo.title
-                  td = tushuo.status
-                  td Edit|Delete
+                  - if tushuo.status == 0
+                    td 启用
+                  - else
+                    td 禁用
+                  td 
+                    = link_to edit_tushuolist_path(tushuo.id) do
+                      i.icon-enter-2
+                    = link_to tushuolist_path(tushuo.id), :confirm => 'want to destroy?', :method => 'delete' do
+                      i.icon-cancel-2
 
           .pagination
             = will_paginate @tushuolist
-            ul
-              li.first
-                a
-              li.prev
-                a
-              li
-                a 1
-              li
-                a 2
-              li.spaces
-                a ...
-              li
-                a 3
-              li.active
-                a 4
-              li.next
-                a
-              li.last
-                a
+            /ul
+            /  li.first
+            /    a
+            /  li.prev
+            /    a
+            /  li
+            /    a 1
+            /  li
+            /    a 2
+            /  li.spaces
+            /    a ...
+            /  li
+            /    a 3
+            /  li.active
+            /    a 4
+            /  li.next
+            /    a
+            /  li.last
+            /    a
+
+          coffee:
+            $('#addBtn').click ->
+              location.href='/tushuolist/new' 

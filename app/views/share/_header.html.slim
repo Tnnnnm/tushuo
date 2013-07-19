@@ -4,19 +4,29 @@ div class='page-header'
       .span3
         h1 Sidebar
       .span6
-        button.shortcut
+        button#list.shortcut
           span.icon
             i class='icon-bookmark'
           span.label 图说管理
         
-        button.shortcut
+        button#sort.shortcut
           span.icon
             i class='icon-link'
           span.label 专题管理
           span.badge 100
 
-        a.shortcut
+        a#account.shortcut
           span.icon
             i class='icon-user-3'
           span.label' 帐号管理
           span class='badge bg-color-red' 100
+
+          coffee:
+            $('#list').click ->
+              location.href = '/tushuolist'
+
+            $('#sort').click ->
+              location.href = '/tushuosort'
+
+            $('#account').click ->
+              location.href = '/account'
