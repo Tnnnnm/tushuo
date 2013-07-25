@@ -7,7 +7,7 @@ class SessionController < ApplicationController
     if user = User.authenticate(params[:login], params[:passwd])
 			reset_session
       session[:user_id] = user.id
-      redirect_to dashboard_index_path, :success => 'Signed in!'
+      redirect_to dashboard_index_path, :notice => 'Signed in!'
     else
 			redirect_to root_url, :error => 'Authentication failed!'
     end 

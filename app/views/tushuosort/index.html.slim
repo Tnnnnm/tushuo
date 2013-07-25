@@ -17,6 +17,7 @@ div class='page secondary with-sidebar'
                 th 编号 
                 th 标题
                 th 状态
+                th 画廊 
                 th 管理
             tbody
               - for tushuo in @tushuosort  
@@ -27,6 +28,9 @@ div class='page secondary with-sidebar'
                     td 启用
                   - else
                     td 禁用
+                  td 
+                    = link_to edit_tagging_path(tushuo.id) do
+                      i.icon-plus-2
                   td 
                     = link_to edit_tushuosort_path(tushuo.id) do
                       i.icon-enter-2

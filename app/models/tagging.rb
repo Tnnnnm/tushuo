@@ -4,4 +4,5 @@ class Tagging < ActiveRecord::Base
   #belongs_to
   belongs_to :tushuolist
   belongs_to :tushuosort
+  
 end

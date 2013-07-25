@@ -9,5 +9,14 @@ class Tushuolist < ActiveRecord::Base
   #scope
   scope :tag_with, lambda{|tag_id| joins(:tushuosorts).where("tushuosorts.id = ?", tag_id)}
 
+  def self.with_out_checked(tushuo)
+    @not_in_list_id = Array.new
+    tushuo.each do |t|
+      @not_in_list_id << t.id
+    end
+    tushuo = Tushuolist.where('id not in (?)', @not_in_list_id)
+  end
+
   mount_uploader :tushuoimg, ImageUploader
+
 end

@@ -18,9 +18,9 @@ Tushuo::Application.routes.draw do
   resources :tushuolist
   resources :tushuosort
 
-  #resources :category do
-  #  resources :tushuolist
-  #end
+  resources :tagging, :only => [:edit, :update] do
+    resources :tushuolist, :only =>[:edit, :update]
+  end
 
   post "/signin" => "session#create"
   get "/signout" => "session#destory"
