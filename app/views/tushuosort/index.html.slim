@@ -14,7 +14,7 @@ div class='page secondary with-sidebar'
           table.hovered
             thead
               tr
-                th 编号 
+                /th 编号 
                 th 标题
                 th 状态
                 th 画廊 
@@ -22,7 +22,7 @@ div class='page secondary with-sidebar'
             tbody
               - for tushuo in @tushuosort  
                 tr
-                  td = tushuo.id
+                  /td = tushuo.id
                   td = tushuo.title
                   - if tushuo.status == 0
                     td 启用

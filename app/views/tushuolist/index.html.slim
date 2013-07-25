@@ -14,14 +14,14 @@ div class='page secondary with-sidebar'
           table.hovered
             thead
               tr
-                th 编号 
+                /th 编号 
                 th 标题
                 th 状态
                 th 管理
             tbody
               - for tushuo in @tushuolist  
                 tr
-                  td = tushuo.id
+                  /td = tushuo.id
                   td = tushuo.title
                   - if tushuo.status == 0
                     td 启用

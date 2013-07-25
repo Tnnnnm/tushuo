@@ -20,7 +20,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
    version :icon do
-     process :resize_to_limit => [50, 50]
+     process :resize_to_limit => [70, 96]
+   end
+
+   version :cover do
+    process :resize_to_limit => [175, 238]
    end
 
   def extension_white_list

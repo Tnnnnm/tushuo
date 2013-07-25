@@ -28,7 +28,7 @@ div class='page secondary with-sidebar'
             
             h3 封面 
             - if @tushuo.tushuocover.present?
-              = image_tag @tushuo.tushuocover_url(:icon).to_s 
+              = image_tag @tushuo.tushuocover_url(:cover).to_s 
             - else
               h3 No cover uploaded
             label class='input-control text span4 as-block'

@@ -11,21 +11,21 @@ div class='page secondary with-sidebar'
           i#categoryBtn class='icon-arrow-right' &nbsp;分类
         
         .row
-          h3 已选择
-          .span10
-            - unless @tushuo_checked.empty?
-              ul class='listview fluid'
-                - for tushuo in @tushuo_checked do
-                  li.selected
-                    .badge
-                      input type='checkbox' checked='checked' name='tushuo[]' value=tushuo.id
-                    .icon
-                      img src='http://metroui.org.ua/images/onenote2013icon.png'
-                    .data  
-                      h6 =tushuo.title
-                      p 1 RUB
-            - else
-              p No items found.
+        h3 已选择
+        .span10
+          - unless @tushuo_checked.empty?
+            ul class='listview fluid'
+              - for tushuo in @tushuo_checked do
+                li.selected
+                  .badge
+                    input type='checkbox' checked='checked' name='tushuo[]' value=tushuo.id
+                  .icon
+                    img src='#{tushuo.tushuoimg}'
+                  .data  
+                    h6 =tushuo.title
+                    p 1 RUB
+          - else
+            p No items found.
         h3 未选择      
         = form_tag tagging_path(@tusort), :method => :put, :multipart => true, :id => 'frm' do
           .span10
@@ -36,7 +36,7 @@ div class='page secondary with-sidebar'
                     .badge
                       input type='checkbox' name='tushuo[]' value=tushuo.id
                     .icon
-                      img src='http://metroui.org.ua/images/onenote2013icon.png'
+                      img src='#{tushuo.tushuoimg}'
                     .data  
                       h6 =tushuo.title
                       p 1 RUB
@@ -53,3 +53,5 @@ div class='page secondary with-sidebar'
 coffee:
   $('#submit').click ->
     $('#frm').submit()
+  $('#listBtn').click ->
+    location.href = '/tushuosort'
