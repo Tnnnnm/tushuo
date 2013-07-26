@@ -8,6 +8,7 @@ class Tushuolist < ActiveRecord::Base
 
   #scope
   scope :tag_with, lambda{|tag_id| joins(:tushuosorts).where("tushuosorts.id = ?", tag_id)}
+  scope :recent, lambda{|date| where(["created_at < ? ", date])}
 
   def self.with_out_checked(tushuo)
     @not_in_list_id = Array.new
