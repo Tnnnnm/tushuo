@@ -31,12 +31,12 @@ div class='page secondary with-sidebar'
                     td 禁用
                   td = tushuo.created_at.strftime('%Y-%b-%d-%a').to_s
                   td 
-                    = link_to edit_tagging_path(tushuo.id) do
+                    = link_to edit_tagging_path(tushuo.id), :style => 'color:#666' do
                       i.icon-plus-2
                   td 
-                    = link_to edit_tushuosort_path(tushuo.id) do
+                    = link_to edit_tushuosort_path(tushuo.id), :style => 'color:#666' do
                       i.icon-enter-2
-                    = link_to tushuosort_path(tushuo.id), :confirm => 'want to destroy?', :method => 'delete' do
+                    = link_to tushuosort_path(tushuo.id), :confirm => 'want to destroy?', :method => 'delete', :style => 'color:#666' do
                       i.icon-cancel-2
         - else
           h3 No items found!
