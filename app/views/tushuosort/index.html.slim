@@ -17,6 +17,7 @@ div class='page secondary with-sidebar'
                 /th 编号 
                 th 标题
                 th 状态
+                th 发布 
                 th 画廊 
                 th 管理
             tbody
@@ -28,6 +29,7 @@ div class='page secondary with-sidebar'
                     td 启用
                   - else
                     td 禁用
+                  td = tushuo.created_at.strftime('%Y-%b-%d-%a').to_s
                   td 
                     = link_to edit_tagging_path(tushuo.id) do
                       i.icon-plus-2

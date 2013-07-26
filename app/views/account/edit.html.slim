@@ -1,0 +1,55 @@
+div class='page secondary with-sidebar'
+  = render 'share/header'  
+  = render 'share/sidebar'  
+  
+  div class='page-region'
+    div class='page-region-content'
+      .span12
+        button.big
+          i#listBtn class='icon-arrow-left' &nbsp;图说 
+        button.big
+          i#sortBtn class='icon-arrow-right' &nbsp;专题
+        
+        .row
+        = form_tag account_path(@account.id), :method => :put, :multipart => true, :id => 'frm' do
+          .span5
+            h3 登录名称 
+            div class='input-control text span4 as-block'
+              = text_field_tag :login, :params['login'], :value => @account.login, :disabled => true
+              button.helper tabindex='-1' type='button'
+
+            h3 登录密码 
+            div class='input-control password span4 as-block'
+              = password_field_tag :password, :params['password'], :value => @account.password
+              button.helper tabindex='-1' type='button'
+
+            h3 确认密码 
+            div class='input-control password span4 as-block'
+              = password_field_tag :repasswd, :params['repasswd']
+              button.helper tabindex='-1' type='button'
+
+        .row
+          .span4
+          .span4
+            button.default
+              i.icon-bookmark id='editBtn' 修改 
+            .h3#msg
+        .span4    
+
+          coffee:
+            $('#editBtn').click ->
+              opposite = false 
+              password = $('#password').val()
+              repasswd = $('#repasswd').val()
+              console.log(password)
+              console.log(repasswd)
+              opposite = true if password == repasswd
+              if opposite && repasswd.length >= 5
+                $('#frm').submit()
+              else
+                $('#msg').text('Invalid')
+
+            $('#listBtn').click ->
+              location.href='/tushuolist' 
+            $('#sortBtn').click ->
+              location.href='/tushuosort' 

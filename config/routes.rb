@@ -17,6 +17,7 @@ Tushuo::Application.routes.draw do
   resources :dashboard, :only => [:index]
   resources :tushuolist
   resources :tushuosort
+  resources :account, :only =>[:edit, :update]
 
   resources :tagging, :only => [:edit, :update] do
     resources :tushuolist, :only =>[:edit, :update]
