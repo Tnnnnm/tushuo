@@ -1,14 +1,14 @@
 class Tushuolist < ActiveRecord::Base
   attr_accessible :title, :status, :tushuoimg
-  scope :open, where(:status => 0)
 
   #has_many
   has_many :taggings
   has_many :tushuosorts, :through => :taggings
 
   #scope
+  scope :open, where(:status => 0)
   scope :tag_with, lambda{|tag_id| joins(:tushuosorts).where("tushuosorts.id = ?", tag_id)}
-  scope :recent, lambda{|date| where(["created_at < ? ", date])}
+  scope :recent, lambda{|date| where(["created_at > ? ", date])}
 
   def self.with_out_checked(tushuo)
     @not_in_list_id = Array.new

@@ -28,9 +28,9 @@ div class='page secondary with-sidebar'
                   - else
                     td 禁用
                   td 
-                    = link_to edit_tushuolist_path(tushuo.id) do
+                    = link_to edit_tushuolist_path(tushuo.id), :style => 'color:#666' do
                       i.icon-enter-2
-                    = link_to tushuolist_path(tushuo.id), :confirm => 'want to destroy?', :method => 'delete' do
+                    = link_to tushuolist_path(tushuo.id), :confirm => 'want to destroy?', :method => 'delete', :style => 'color:#666' do
                       i.icon-cancel-2
         - else
           h3 No items found!
